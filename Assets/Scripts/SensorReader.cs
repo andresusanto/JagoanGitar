@@ -7,6 +7,7 @@ using System.Text;
 using System;
 
 public class SensorReader : MonoBehaviour {
+	public float currentFrequency;
 	private Socket socket;
 
 	public class StateObject {
@@ -23,10 +24,12 @@ public class SensorReader : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp );	
-		IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+		IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");
 		IPAddress ipAddress = ipHostInfo.AddressList[0];
 		socket.Bind (new IPEndPoint (ipAddress, 1231));
-		socket.Listen (10);
+		socket.Listen (100);
+		socket.BeginAccept( new AsyncCallback(AcceptCallback), socket);
+		Debug.Log ("STARTED");
 	}
 
 	// Update is called once per frame
@@ -34,26 +37,22 @@ public class SensorReader : MonoBehaviour {
 		
 	}
 
-	public static void AcceptCallback(IAsyncResult ar) {
+	public void AcceptCallback(IAsyncResult ar) {
 		Socket listener = (Socket) ar.AsyncState;
 		Socket handler = listener.EndAccept(ar);
 
 		// Create the state object.
 		StateObject state = new StateObject();
 		state.workSocket = handler;
-		handler.BeginReceive( state.buffer, 0, StateObject.BufferSize, 0,
-			new AsyncCallback(ReadCallback), state);
+		handler.BeginReceive( state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
 	}
 
-	public static void ReadCallback(IAsyncResult ar) {
+	public void ReadCallback(IAsyncResult ar) {
 		String content = String.Empty;
 
-		// Retrieve the state object and the handler socket
-		// from the asynchronous state object.
 		StateObject state = (StateObject) ar.AsyncState;
 		Socket handler = state.workSocket;
 
-		// Read data from the client socket. 
 		int bytesRead = handler.EndReceive(ar);
 
 		if (bytesRead > 0) {
@@ -65,13 +64,11 @@ public class SensorReader : MonoBehaviour {
 			// more data.
 			content = state.sb.ToString();
 			if (content.IndexOf("\n") > -1) {
-				Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
-					content.Length, content );
-			} else {
-				// Not all data received. Get more.
-				handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-					new AsyncCallback(ReadCallback), state);
+				float.TryParse (content.Trim(), out currentFrequency);
+				state.sb.Length = 0;
+				Debug.Log (content);
 			}
+			handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
 		}
 	}
 }
