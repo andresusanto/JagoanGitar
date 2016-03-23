@@ -16,7 +16,7 @@ namespace JagoanGitarBridge
     public partial class Form1 : Form
     {
         private SerialPort serialPort;
-        private string PortName = "COM3";
+        private string PortName = "COM2";
         private int BaudRate = 9600;
         private StringBuilder tmpData;
         private Socket dataSender;
@@ -46,16 +46,18 @@ namespace JagoanGitarBridge
 
         private void dataReceived(object sender, SerialDataReceivedEventArgs args)
         {
+            
             string receivedData = serialPort.ReadExisting();
             tmpData.Append(receivedData);
 
             if (receivedData.Contains("\n"))
             {
                 string strToSend = tmpData.ToString();
-
                 if (!strToSend.Contains("clip"))
                 {
-                    strToSend = strToSend.Trim().Replace("\n", "");
+                    strToSend = strToSend.Replace("hz", "").Replace("\n", "").Trim() + "\n";
+
+                    Console.WriteLine(strToSend);
                     byte[] msg = Encoding.ASCII.GetBytes(strToSend);
                     dataSender.Send(msg);
                 }

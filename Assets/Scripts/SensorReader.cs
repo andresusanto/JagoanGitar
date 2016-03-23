@@ -64,9 +64,9 @@ public class SensorReader : MonoBehaviour {
 			// more data.
 			content = state.sb.ToString();
 			if (content.IndexOf("\n") > -1) {
+				Debug.Log (content);
 				float.TryParse (content.Trim(), out currentFrequency);
 				state.sb.Length = 0;
-				Debug.Log (content);
 			}
 			handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
 		}
