@@ -6,3 +6,11 @@ D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\De
 D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.exe
 D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.pdb
 D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.csprojResolveAssemblyReference.cache
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.exe
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.pdb
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\bin\Debug\JagoanGitarBridge.exe
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\bin\Debug\JagoanGitarBridge.pdb
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.csprojResolveAssemblyReference.cache
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.Form1.resources
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.Properties.Resources.resources
+D:\Tugas Sekolah\PAMI\JagoanGitar\JagoanGitar\JagoanGitarBridge\JagoanGitarBridge\obj\x86\Debug\JagoanGitarBridge.csproj.GenerateResource.Cache

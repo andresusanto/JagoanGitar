@@ -16,7 +16,7 @@ namespace JagoanGitarBridge
     public partial class Form1 : Form
     {
         private SerialPort serialPort;
-        private string PortName = "COM2";
+        private string PortName = "COM3";
         private int BaudRate = 9600;
         private StringBuilder tmpData;
         private Socket dataSender;
@@ -37,11 +37,11 @@ namespace JagoanGitarBridge
             dataSender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             dataSender.Connect("127.0.0.1", 1231);
 
-            byte[] msg = Encoding.ASCII.GetBytes("0.24\n");
-            dataSender.Send(msg);
+            //byte[] msg = Encoding.ASCII.GetBytes("0.24\n");
+            //dataSender.Send(msg);
 
-            Thread.Sleep(1000);
-            dataSender.Send(msg);
+            //Thread.Sleep(1000);
+            //dataSender.Send(msg);
         }
 
         private void dataReceived(object sender, SerialDataReceivedEventArgs args)
