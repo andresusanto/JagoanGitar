@@ -29,10 +29,10 @@ namespace JagoanGitarBridge
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //serialPort = new SerialPort(PortName, BaudRate);
-            //serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
-            //serialPort.Open();
-            //System.Console.WriteLine(serialPort.IsOpen);
+            serialPort = new SerialPort(PortName, BaudRate);
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
+            serialPort.Open();
+            System.Console.WriteLine(serialPort.IsOpen);
 
             dataSender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             dataSender.Connect("127.0.0.1", 1231);
